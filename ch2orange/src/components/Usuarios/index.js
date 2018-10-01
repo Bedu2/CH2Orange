@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
-import {Table, Icon, Button} from 'react-materialize'
-
+import {Table, Icon, Button} from 'react-materialize';
+import * as usuariosActions from '../../actions/usuariosActions';
 
 class Usuarios extends Component {
 
@@ -10,21 +10,29 @@ class Usuarios extends Component {
 		this.props.traerUsuarios
 	}
 
-desplegarUsuarios = () => (
-	<tr>
-	  <td>Nombre</td>
-	  <td>Apellido Paterno</td>
-	  <td>Apellido Materno</td>
-	  <td>Edad</td>
-		<td>
-      <Button  small className='orange' waves='light' icon='visibility'/>
-      &nbsp;
-      <Button  small className='orange' waves='light' icon='edit'/>
-      &nbsp;
-      <Button  small className='orange' waves='light' icon='delete_outline'/>
-		</td>
-	</tr>
-	)
+	desplegarUsuarios = () => 
+		{
+			this.props.usuarios.map((elem, index) => 
+				(
+					<tr key={ elem.id }>
+					  <td>{elem.nombre }</td>
+					  <td>{elem.apellidos.Paterno}</td>
+					  <td>{elem.apellidos.Materno}</td>
+					  <td>{elem.edad}</td>
+						<td>
+				      <Link to='/u_dependientes/usuario_id'>
+				      	<Button  small className='red' waves='light' icon='visibility'/>
+				      </Link>
+				      &nbsp;
+				      <Link to='/u_editar/usuario_id'>
+				      	<Button  small className='red' waves='light' icon='edit'/>
+				      </Link>
+				      &nbsp;
+				      <Button  small className='red' waves='light' icon='delete_outline'/>
+						</td>
+					</tr>
+				))
+		}
 
 	render() {
 		return (
@@ -32,7 +40,7 @@ desplegarUsuarios = () => (
 				<h3 className="valign-wrapper">
 					Usuarios
 					&nbsp;
-					<Link to='/usuarios/agregar'>
+					<Link to='/u_agregar'>
 						<Button floating large className='blue' waves='light' icon='add'/>
 					</Link>
 				</h3>
@@ -40,9 +48,9 @@ desplegarUsuarios = () => (
 					  <thead>
 					    <tr>
 					      <th data-field="name">Name</th>
-					      <th data-field="apPaterno">Apellido Paterno</th>
-					      <th data-field="apMaterno">Apellido Materno</th>
-					      <th data-field="age">Edad</th>
+					      <th data-field="apellidoPaterno">Apellido Paterno</th>
+					      <th data-field="apellidoMaterno">Apellido Materno</th>
+					      <th data-field="edad">Edad</th>
 					      <th data-field="actions">ACTIONS</th>
 					    </tr>
 					  </thead>
@@ -55,4 +63,9 @@ desplegarUsuarios = () => (
 	}
 }
 
-export default Usuarios
+const mapStateToProps = ({usuariosReducer}) => 
+{
+	return usuariosReducer
+}
+
+export default connect(mapStateToProps, usuariosActions)(Usuarios)

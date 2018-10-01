@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Route, BrowserRouter} from 'react-router-dom';
 import Header from './Header'
 import Usuarios from './Usuarios';
+import UsuariosAgregar from './Usuarios/Agregar'
 
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
         		<br/>
         		<div className="container">
                <Route exact path='/' component={Usuarios}/>
+               <Route exact path='/u_agregar' component = {UsuariosAgregar}/>
         		</div>
         	</div>
         </BrowserRouter>
