@@ -3,3 +3,10 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+
+.alignIcons {
+  display: flex ;
+  justify-content: space-evenly;
+  align-items: center;
+}
