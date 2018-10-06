@@ -1,0 +1,14 @@
+export const LLAMAR = 'llamar';
+export const EXITOSO = 'exitoso';
+export const FALLO = 'fallo';
+export const NOMBRE = 'nombre';
+export const APELLIDOMATERNO = 'apellidoMaterno';
+export const APELLIDOPATERNO = 'apellidoPaterno';
+export const EDAD = 'edad';
+export const USUARIO_EDITAR = 'usuario_editar';
+export const FORMA_EXITOSA = 'forma_enviada';
+export const EDITAR_NOMBRE = 'editar_nombre';
+export const EDITAR_APPATERNO = 'editar_appaterno';
+export const EDITAR_APMATERNO = 'editar_apmaterno';
+export const EDITAR_EDAD = 'editar_edad';
+export const ELIMINAR = 'eliminar_usuario';
