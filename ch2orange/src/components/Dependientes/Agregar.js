@@ -31,6 +31,9 @@ class DependientesAgregar extends Component {
     render() {
         return (
             <div>
+                <h3 className="valign-wrapper">
+                    Agregar Dependiente:
+                </h3>
                 <div className="row">
                     <Input
                         s={12}

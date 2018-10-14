@@ -43,7 +43,7 @@ export default (state = INITIAL_STATE, action) =>
 {
     const obtenerIndiceUsuario = (idUsuario) => state.usuarios.findIndex((usuario)=>{
         return usuario._id === idUsuario
-    })
+    });
 
     switch (action.type)
     {
@@ -56,13 +56,7 @@ export default (state = INITIAL_STATE, action) =>
         case APELLIDOPATERNO: return { ...state, apellidos:{ ...state.apellidos, paterno: action.payload}};
         case APELLIDOMATERNO: return { ...state, apellidos:{ ...state.apellidos, materno:action.payload}};
         case EDAD: return { ...state, edad: action.payload };
-        case EDITAR_NOMBRE:
-            return {
-                ...state,
-                usuario_editar: {
-                        ...state.usuario_editar,
-                        nombre: action.payload
-                }};
+        case EDITAR_NOMBRE: return {...state,usuario_editar: {...state.usuario_editar,nombre: action.payload                }};
         case EDITAR_APPATERNO: return { ...state, usuario_editar:{ ...state.usuario_editar, apellidos:{...state.usuario_editar.apellidos, paterno: action.payload}}};
         case EDITAR_APMATERNO: return { ...state, usuario_editar:{ ...state.usuario_editar, apellidos:{...state.usuario_editar.apellidos, materno: action.payload}}};
         case EDITAR_EDAD: return { ...state, usuario_editar:{ ...state.usuario_editar, edad: action.payload}};

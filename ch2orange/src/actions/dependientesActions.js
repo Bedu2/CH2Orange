@@ -62,7 +62,6 @@ export const enviarFormaDep = (valores, dependientes) => async (dispatch) => {
     }
 };
 
-
 export const enviarEditado = (id, valores, usuarios) => async (dispatch) => {
     dispatch ({type: LLAMAR});
 
@@ -110,7 +109,6 @@ export const llamarDependiente = (id) => async (dispatch) =>
 export const cambiarDependiente = (type, editado) => async  (dispatch) =>{
     dispatch ({type: type, payload: editado});
 };
-
 
 export const enviarDepEditado = (id, valores, dependientes) => async (dispatch) => {
     dispatch ({type: LLAMAR_DEP, });

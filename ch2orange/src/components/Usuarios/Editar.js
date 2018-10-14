@@ -43,6 +43,9 @@ class UsuariosEditar extends Component {
     render() {
         return (
             <div>
+                <h4 className="valign-wrapper">
+                    Editar Usuario:
+                </h4>
                 <div className="row">
                     <Input
                         s={12}
@@ -94,20 +97,20 @@ class UsuariosEditar extends Component {
                     />
                 </div>
                 <div className="row">
+                    <Button
+                        className='blue accent-1 modal-close col s6 m4 offset-m2 ' waves='light'
+                        onClick={this.enviar}
+                        disabled={this.props.cargando}
+                    >
+                        Guardar
+                    </Button>
+                    <Link to={`/`}>
                         <Button
-                            className='blue accent-1 modal-close col s6 m4 offset-m2 ' waves='light'
-                            onClick={this.enviar}
-                            disabled={this.props.cargando}
+                            className='deep-orange darken-3 modal-close col s6 m4 ' waves='light'
                         >
-                            Guardar
+                            Regresar
                         </Button>
-                        <Link to={`/`}>
-                            <Button
-                                className='deep-orange darken-3 modal-close col s6 m4 ' waves='light'
-                            >
-                                Regresar
-                            </Button>
-                        </Link>
+                    </Link>
                 </div>
             </div>
         );

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import * as dependientesActions from '../../actions/dependientesActions';
-import {Button, Modal, Table,Col, Card} from "react-materialize";
+import {Button, Modal, Table, Card} from "react-materialize";
 
 class Dependientes extends Component {
 
@@ -13,19 +13,17 @@ class Dependientes extends Component {
 
     desplegarEncabezado = () => (
         <div>
-            <Col m={6} s={12}>
-                <Card className='indigo darken-4' textClassName='white-text'>
-                    {this.props.usuario_consultar.nombre}
-                    &nbsp;
-                    {this.props.usuario_consultar.apellidos.paterno}
-                    &nbsp;
-                    {this.props.usuario_consultar.apellidos.materno}
-                    &nbsp;
-                    <Link to={`/d_agregar/${this.props.usuario_consultar._id}`}>
-                        <Button large floating className='blue darken-3' waves='light' icon='add' title='Agregar Dependiente'/>
-                    </Link>
-                </Card>
-            </Col>
+            <Card className='indigo darken-4' textClassName='white-text'>
+                {this.props.usuario_consultar.nombre}
+                &nbsp;
+                {this.props.usuario_consultar.apellidos.paterno}
+                &nbsp;
+                {this.props.usuario_consultar.apellidos.materno}
+                &nbsp;
+                <Link to={`/d_agregar/${this.props.usuario_consultar._id}`}>
+                    <Button large floating className='blue darken-3' waves='light' icon='add' title='Agregar Dependiente'/>
+                </Link>
+            </Card>
         </div>
     );
 

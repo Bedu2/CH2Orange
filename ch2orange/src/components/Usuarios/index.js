@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Table,  Button, Modal} from 'react-materialize';
 import * as usuariosActions from '../../actions/usuariosActions';
-
 import '../../index.css';
 
 class Usuarios extends Component {
@@ -38,7 +37,11 @@ class Usuarios extends Component {
                                             waves='light' 
                                             icon='check_circle' 
                                             title ='Si Borrar'
-                                            onClick={()=> this.props.borrarUsuario(element._id)}/>
+                                            onClick={()=> 
+                                                {
+                                                    this.props.borrarUsuario(element._id);
+                                                }
+                                            }/>
                                 </span>
                             }
                             trigger={

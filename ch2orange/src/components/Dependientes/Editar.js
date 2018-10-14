@@ -80,18 +80,18 @@ class DependientesEditar extends Component {
                     />
                 </div>
                 <div className="row">
-                        <Button
-                            className='blue accent-1 modal-close col s6 m4 offset-m2 ' waves='light'
-                            onClick={this.enviar}
-                            disabled={this.props.cargando}
-                        >
-                            Guardar
-                        </Button>
-                        <Link to= {`/d_usuario/${this.props.usuario_consultar._id}`}>
+                    <Button
+                        className='blue accent-1 modal-close col s6 m4 offset-m2 ' waves='light'
+                        onClick={this.enviar}
+                        disabled={this.props.cargando}
+                    >
+                        Guardar
+                    </Button>
+                    <Link to= {`/d_usuario/${this.props.usuario_consultar._id}`}>
                         <Button className='deep-orange darken-3 modal-close col s6 m4 ' waves='light'>
                             Regresar
                         </Button>
-                        </Link>
+                    </Link>
                 </div>
             </div>
         );

@@ -7,7 +7,7 @@ const Header = (props) =>
         <div>
             <Navbar left className='indigo darken-4'>
                 <Link to={`/`}>
-                	<NavItem><Icon>account_circle</Icon></NavItem>
+                	<NavItem title='Usuarios'><Icon>account_circle</Icon></NavItem>
                 </Link>
             </Navbar>
         </div>
