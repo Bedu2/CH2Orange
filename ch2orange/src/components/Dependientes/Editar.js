@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import  { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 import {Button, Input} from 'react-materialize';
 import * as dependientesActions from '../../actions/dependientesActions'
 import {
@@ -86,13 +87,11 @@ class DependientesEditar extends Component {
                         >
                             Guardar
                         </Button>
-                        <Button
-                            className='deep-orange darken-3 modal-close col s6 m4 ' waves='light'
-                            node='a'
-                            href={`/d_usuario/${this.props.usuario_consultar._id}`}
-                        >
+                        <Link to= {`/d_usuario/${this.props.usuario_consultar._id}`}>
+                        <Button className='deep-orange darken-3 modal-close col s6 m4 ' waves='light'>
                             Regresar
                         </Button>
+                        </Link>
                 </div>
             </div>
         );

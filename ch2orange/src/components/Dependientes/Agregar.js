@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 import { Input, Button } from 'react-materialize';
 import * as dependientesActions from '../../actions/dependientesActions';
 import {DEPENDENCIA, EDAD, NOMBRE_COMPLETO} from "../../types/dependientesTypes";
@@ -73,13 +74,11 @@ class DependientesAgregar extends Component {
                         >
                             Guardar
                         </Button>
-                        <Button
-                            className='deep-orange darken-3 modal-close col s6 m4 ' waves='light'
-                            node='a'
-                            href={`/d_usuario/${this.props.match.params.id}`}
-                        >
-                            Regresar
-                        </Button>
+                        <Link to={`/d_usuario/${this.props.match.params.id}`}>
+                            <Button className='deep-orange darken-3 modal-close col s6 m4 ' waves='light'>
+                                Regresar
+                            </Button>
+                        </Link>
                 </div>
             </div>
         );

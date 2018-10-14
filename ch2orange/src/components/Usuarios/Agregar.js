@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 import { Input, Button } from 'react-materialize';
 import * as usuariosActions from '../../actions/usuariosActions';
 import {
@@ -79,19 +80,18 @@ class UsuariosAgregar extends Component {
                 <div className="row">
                         <Button
                             className='blue accent-1 modal-close col s6 m4 offset-m2 ' waves='light'
-                            
                             onClick={this.enviar}
                             disabled={this.props.cargando}
                         >
                             Guardar
                         </Button>
-                        <Button
-                            className='deep-orange darken-3 modal-close col s6 m4 ' waves='light'
-                            node='a'
-                            href='/'
-                        >
-                            Regresar
-                        </Button>
+                        <Link to={`/`}>
+                            <Button
+                                className='deep-orange darken-3 modal-close col s6 m4 ' waves='light'
+                            >
+                                Regresar
+                            </Button>
+                        </Link>
                 </div>
             </div>
         );
