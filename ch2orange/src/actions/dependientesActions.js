@@ -86,6 +86,7 @@ export const borrarDependiente = (id) => async (dispatch) => {
     try {
         const response = await axios.delete(`https://g2-ch2.herokuapp.com/api/dependientes/orange/${id}`);
         window.Materialize.toast('Usuario eliminado exitosamente.', 5*1000);
+        window.location.reload();
     }
     catch(error) {
         dispatch({type: FALLO, payload: error.message});
@@ -117,7 +118,6 @@ export const enviarDepEditado = (id, valores, dependientes) => async (dispatch) 
     try {
         const response = await axios.post(`https://g2-ch2.herokuapp.com/api/dependientes/orange/${id}`, valores);
         window.Materialize.toast('Dependiente editado exitosamente.', 5*1000);
-        //dependientes.unshift(response.data);
         dispatch ({
             type: EXITOSO_DEP_EDITAR,
             payload: dependientes
