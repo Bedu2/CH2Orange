@@ -9,8 +9,7 @@ import '../../index.css';
 class Usuarios extends Component {
 
     componentDidMount() {
-        if(!this.props.primer_get)
-        this.props.desplegarUsuarios();
+        this.props.traerUsuarios();
     }
 
     desplegarUsuarios = () =>
@@ -24,25 +23,22 @@ class Usuarios extends Component {
                     <td>{element.edad}</td>
                     <td className='alignIcons'>
                         <Link to={`/d_usuario/${element._id}`}>
-                            <Button  className='blue accent-1' waves='light' icon='visibility'/>
+                            <Button  small className='blue accent-1' waves='light' icon='visibility'/>
                         </Link>
                         <Link to={`/u_editar/${element._id}`}>
-                            <Button  className='blue accent-1' waves='light' icon='edit'/>
+                            <Button  small className='blue accent-1' waves='light' icon='edit'/>
                         </Link>
                         <Modal
                             header='Eliminar Usuario'
                             actions={
                                 <span>
-                                    <Button className='blue accent-1 modal-close' waves='light' icon='close' title ='No borrar'/>
-                                    <Button className='blue accent-1 modal-close' 
-                                            waves='light' 
-                                            icon='check_circle' 
-                                            title ='Si Borrar'
-                                            onClick={()=> this.props.borrarUsuario(element._id)}/>
+                                    <Button small className='blue accent-1 modal-close' waves='light' icon='close' title ='No borrar'/>
+                                    <Button small className='blue accent-1 modal-close' waves='light' icon='check_circle' title ='Si Borrar'
+                                            onClick={()=> {this.props.borrarUsuario(element._id)}}/>
                                 </span>
                             }
                             trigger={
-                                <Button  className='blue accent-1' waves='light' icon='delete_outline'/>}>
+                                <Button  small className='blue accent-1' waves='light' icon='delete_outline'/>}>
                             <p> Esta seguro que desea eliminar el usuario?</p>
                         </Modal>
                     </td>

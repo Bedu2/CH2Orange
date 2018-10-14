@@ -11,15 +11,12 @@ import {
     EDITAR_APMATERNO,
     EDITAR_EDAD,
     USUARIO_EDITAR,
-    ELIMINAR,
-    VACIAR_FORMULARIO,
-    PRIMER_GET
+    ELIMINAR
 } from '../types/usuariosTypes';
 
 const INITIAL_STATE = {
     usuarios: [],
     cargando: false,
-    primer_get: false,
     error: '',
     nombre: '',
     apellidos: {
@@ -41,15 +38,10 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) =>
 {
-    const obtenerIndiceUsuario = (idUsuario) => state.usuarios.findIndex((usuario)=>{
-        return usuario._id === idUsuario
-    })
-
     switch (action.type)
     {
         case LLAMAR: return { ...state, error: '', cargando: true };
         case ELIMINAR: return {...state, error:'', cargando: false}
-        case PRIMER_GET: return {...state, primer_get:true};
         case EXITOSO: return { ...state, usuarios: action.payload, cargando: false, error: ''};
         case FALLO: return { ...state, error: action.payload, cargando: false };
         case NOMBRE: return { ...state, nombre: action.payload };
@@ -67,7 +59,6 @@ export default (state = INITIAL_STATE, action) =>
         case EDITAR_APMATERNO: return { ...state, usuario_editar:{ ...state.usuario_editar, apellidos:{...state.usuario_editar.apellidos, materno: action.payload}}};
         case EDITAR_EDAD: return { ...state, usuario_editar:{ ...state.usuario_editar, edad: action.payload}};
         case USUARIO_EDITAR: return {...state, usuario_editar: action.payload, cargando: false, error:''};
-        case VACIAR_FORMULARIO: return {...state, error:'', cargando:true, nombre:'', edad:'', apellidos:{ ...state.apellidos, paterno:'', materno:''}};
         default: return state;
     }
 }

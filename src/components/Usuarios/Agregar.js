@@ -15,12 +15,12 @@ class UsuariosAgregar extends Component {
 
     enviar = async () => {
         const {
-            nombre,
+            nombre: nombre,
             apellidos: {
-                paterno,
-                materno
+                paterno: paterno,
+                materno: materno
             },
-            edad
+            edad: edad
         } = this.props;
 
         const valores = { nombre, apellidos: {paterno, materno}, edad};
@@ -77,21 +77,16 @@ class UsuariosAgregar extends Component {
                     />
                 </div>
                 <div className="row">
+                    <div className="col s6 offset-s3 m4 offset-m4">
                         <Button
-                            className='blue accent-1 modal-close col s6 m4 offset-m2 ' waves='light'
-                            
+                            small className='blue accent-1 modal-close' waves='light'
+                            style={{width: '100%'}}
+                            waves='light'
                             onClick={this.enviar}
-                            disabled={this.props.cargando}
                         >
                             Guardar
                         </Button>
-                        <Button
-                            className='deep-orange darken-3 modal-close col s6 m4 ' waves='light'
-                            node='a'
-                            href='/'
-                        >
-                            Regresar
-                        </Button>
+                    </div>
                 </div>
             </div>
         );

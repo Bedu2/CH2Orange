@@ -6,7 +6,6 @@ import UsuariosAgregar from './Usuarios/Agregar';
 import UsuariosEditar from "./Usuarios/Editar";
 import Dependientes from "./Dependientes";
 import DependientesAgregar from "./Dependientes/Agregar";
-import DependientesEditar from "./Dependientes/Editar";
 
 const App  = () =>
      (
@@ -21,11 +20,10 @@ const App  = () =>
                         <Route exact path='/u_editar/:id' component={UsuariosEditar} />
                         <Route exact path='/d_usuario/:id' component={Dependientes} />
                         <Route exact path='/d_agregar/:id' component={DependientesAgregar} />
-                        <Route exact path='/d_editar/:id' component={DependientesEditar} />
+                        <Route exact path='/d_editar/:id' component={UsuariosEditar} />
                     </div>
                 </div>
             </BrowserRouter>
         </div>
     );
-
 export default App;

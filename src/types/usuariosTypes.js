@@ -11,5 +11,3 @@ export const EDITAR_APPATERNO = 'editar_appaterno';
 export const EDITAR_APMATERNO = 'editar_apmaterno';
 export const EDITAR_EDAD = 'editar_edad';
 export const ELIMINAR = 'eliminar_usuario';
-export const VACIAR_FORMULARIO = 'vaciar_formulario';
-export const PRIMER_GET = 'primer_get'

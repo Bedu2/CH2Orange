@@ -48,7 +48,8 @@ class UsuariosEditar extends Component {
                         m={6}
                         label="Nombre"
                         type='text'
-                       value={this.props.usuario_editar.nombre}
+                        placeholder =' '
+                        value={this.props.usuario_editar.nombre}
                         onChange={
                             (event) => this.handleChange(event, EDITAR_NOMBRE)
                         }
@@ -59,6 +60,7 @@ class UsuariosEditar extends Component {
                         m={6}
                         label="Apellido Paterno"
                         type='text'
+                        placeholder =' '
                         value={this.props.usuario_editar.apellidos.paterno}
                         onChange={
                             (event) => this.handleChange(event, EDITAR_APPATERNO)
@@ -70,6 +72,7 @@ class UsuariosEditar extends Component {
                         m={6}
                         label="Apellido Materno"
                         type='text'
+                        placeholder =' '
                         value={this.props.usuario_editar.apellidos.materno}
                         onChange={
                             (event) => this.handleChange(event, EDITAR_APMATERNO)
@@ -81,6 +84,7 @@ class UsuariosEditar extends Component {
                         m={6}
                         label="Edad"
                         type='number'
+                        placeholder =' '
                         value={this.props.usuario_editar.edad}
                         onChange={
                             (event) => this.handleChange(event, EDITAR_EDAD)
@@ -89,15 +93,20 @@ class UsuariosEditar extends Component {
                     />
                 </div>
                 <div className="row">
-                    <div className="col s6 offset-s3 m4 offset-m4">
                         <Button
-                            style={{width: '100%'}}
-                            waves='light'
+                            className='blue accent-1 modal-close col s6 m4 offset-m2 ' waves='light'
                             onClick={this.enviar}
+                            disabled={this.props.cargando}
                         >
                             Guardar
                         </Button>
-                    </div>
+                        <Button
+                            className='deep-orange darken-3 modal-close col s6 m4 ' waves='light'
+                            node='a'
+                            href='/'
+                        >
+                            Regresar
+                        </Button>
                 </div>
             </div>
         );

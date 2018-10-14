@@ -1,32 +1,44 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Input, Button } from 'react-materialize';
+import { Input, Button, Preloader} from 'react-materialize';
 import * as usuariosActions from '../../actions/usuariosActions';
 import {
-    NOMBRE,
-    APELLIDOPATERNO,
-    APELLIDOMATERNO,
-    EDAD
+    EDITAR_NOMBRE,
+    EDITAR_APPATERNO,
+    EDITAR_APMATERNO,
+    EDITAR_EDAD
 } from '../../types/usuariosTypes';
 
-class UsuariosAgregar extends Component {
 
-    handleChange = (event, type) => this.props.cambiarInput(type, event.target.value);
+class UsuariosEditar extends Component {
+
+    componentDidMount() {
+        this.props.llamarEditado(this.props.match.params.id);
+    }
+
+    handleChange = (event, propiedad) => {
+        this.props.cambiarEditado(
+            propiedad, event.target.value
+        );
+    };
+
+    mostrarPreloader = () => (
+        <div className="center-align">
+            <Preloader/>
+        </div>
+    );
 
     enviar = async () => {
         const {
             nombre,
-            apellidos: {
-                paterno,
-                materno
-            },
+            apellidos,
             edad
-        } = this.props;
+        } = this.props.usuario_editar;
 
-        const valores = { nombre, apellidos: {paterno, materno}, edad};
-
-        this.props.enviarForma(valores, this.props.usuarios);
+        const valores = { nombre, apellidos, edad};
+        this.props.enviarEditado(this.props.usuario_editar._id, valores, this.props.usuarios);
     };
+
     render() {
         return (
             <div>
@@ -36,9 +48,10 @@ class UsuariosAgregar extends Component {
                         m={6}
                         label="Nombre"
                         type='text'
-                        value={this.props.nombre}
+                        placeholder =' '
+                        value={this.props.usuario_editar.nombre}
                         onChange={
-                            (event) => this.handleChange(event, NOMBRE)
+                            (event) => this.handleChange(event, EDITAR_NOMBRE)
                         }
                         name="nombre"
                     />
@@ -47,9 +60,10 @@ class UsuariosAgregar extends Component {
                         m={6}
                         label="Apellido Paterno"
                         type='text'
-                        value={this.props.apellidos.paterno}
+                        placeholder =' '
+                        value={this.props.usuario_editar.apellidos.paterno}
                         onChange={
-                            (event) => this.handleChange(event, APELLIDOPATERNO)
+                            (event) => this.handleChange(event, EDITAR_APPATERNO)
                         }
                         name="appaterno"
                     />
@@ -58,9 +72,10 @@ class UsuariosAgregar extends Component {
                         m={6}
                         label="Apellido Materno"
                         type='text'
-                        value={this.props.apellidos.materno}
+                        placeholder =' '
+                        value={this.props.usuario_editar.apellidos.materno}
                         onChange={
-                            (event) => this.handleChange(event, APELLIDOMATERNO)
+                            (event) => this.handleChange(event, EDITAR_APMATERNO)
                         }
                         name="apmaterno"
                     />
@@ -69,29 +84,25 @@ class UsuariosAgregar extends Component {
                         m={6}
                         label="Edad"
                         type='number'
-                        value={this.props.edad}
+                        placeholder =' '
+                        value={this.props.usuario_editar.edad}
                         onChange={
-                            (event) => this.handleChange(event, EDAD)
+                            (event) => this.handleChange(event, EDITAR_EDAD)
                         }
                         name="edad"
                     />
                 </div>
                 <div className="row">
+                    <div className="col s6 offset-s3 m4 offset-m4">
                         <Button
-                            className='blue accent-1 modal-close col s6 m4 offset-m2 ' waves='light'
-                            
+                            small className='blue accent-1 modal-close' waves='light'
+                            style={{width: '100%'}}
+                            waves='light'
                             onClick={this.enviar}
-                            disabled={this.props.cargando}
                         >
                             Guardar
                         </Button>
-                        <Button
-                            className='deep-orange darken-3 modal-close col s6 m4 ' waves='light'
-                            node='a'
-                            href='/'
-                        >
-                            Regresar
-                        </Button>
+                    </div>
                 </div>
             </div>
         );
@@ -101,5 +112,4 @@ class UsuariosAgregar extends Component {
 const mapStateToProps = ({ usuariosReducer }) => {
     return usuariosReducer;
 };
-
-export default connect(mapStateToProps, usuariosActions)(UsuariosAgregar);
+export default connect(mapStateToProps, usuariosActions)(UsuariosEditar);
